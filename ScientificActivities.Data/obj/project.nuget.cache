@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V5vupopar9l/Bu4ps/XdCQlDeksrWr8DM1wvLYDHvVsQc6c+GLsrl0bpxReAfd0nNCerhK3pg5LfdNw0wumPxA==",
+  "dgSpecHash": "zAU1gZ9BK6cYep/fN2voMkk59nJpNefgJbq0Pz04Be1Al/dt7xJMNqPhd50Ye7TAUJezbubszMdGRc4JaBzqYg==",
   "success": true,
-  "projectFilePath": "D:\\PGU\\DiplomWork\\ScientificActivities\\ScientificActivities.Data\\ScientificActivities.Data.csproj",
+  "projectFilePath": "D:\\PGU\\DiplomWork\\d\\ScientificActivities-main\\ScientificActivities.Data\\ScientificActivities.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adama\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

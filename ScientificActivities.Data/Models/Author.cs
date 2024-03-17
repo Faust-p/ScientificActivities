@@ -1,4 +1,5 @@
-﻿using ScientificActivities.StorageEnums;
+﻿using ScientificActivities.Data.Models.Tables;
+using ScientificActivities.StorageEnums;
 
 namespace ScientificActivities.Data.Models;
 
@@ -25,6 +26,10 @@ public class Author
     public EnumEmployeePosition? EmployeerPosition { get; set; }
 
     public EnumAcademicDegree? AcademicDegree { get; set; }
+    
+    public Articles Articles { get; set; }
+    
+    public long ArticlesId { get; set; }
     
     public List<File>? Files { get; set; }
 
