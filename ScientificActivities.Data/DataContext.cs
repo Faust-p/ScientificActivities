@@ -7,6 +7,9 @@ namespace ScientificActivities.Data;
 
 public sealed class DataContext : DbContext
 {
+    public DataContext()
+    {
+    }
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
         //Database.Migrate();
@@ -31,10 +34,19 @@ public sealed class DataContext : DbContext
     public DbSet<User> Users { get; set; }
 
     public DbSet<MailToken> MailToken { get; set; }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=.;Database=master;Trusted_Connection=True;TrustServerCertificate=True");
 
+        }
+    }
     protected override void OnModelCreating(ModelBuilder mb)
     {
         base.OnModelCreating(mb);
         mb.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
     }
 }
+

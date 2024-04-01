@@ -1,10 +1,12 @@
-﻿using ScientificActivities.Data.Models.Tables;
+﻿using System.ComponentModel.DataAnnotations;
+using ScientificActivities.Data.Models.Tables;
 using ScientificActivities.StorageEnums;
 
 namespace ScientificActivities.Data.Models;
 
 public class Author
 {
+    [Key]
     public long Id { get; set; }
 
     public string FirstName { get; set; } = string.Empty;
