@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "LkkyDTfhtj3hITVVYuAjUsMM9Vs0U3/FMSUzRbsaLyQFvy+w2oW85eruSJs+Na+dk8LNs1FSilhWlBK21KgIww==",
+  "dgSpecHash": "AcwV+GFHVHoKkaAXvBkBfhYaUhV8BzQbaH53TwHLG5eA4OmNtWjJsf74fLMfDHizMTKit03kWW+LiQrm2WK7pQ==",
   "success": true,
-  "projectFilePath": "D:\\PGU\\DiplomWork\\d\\ScientificActivities-main\\ScientificActivities.External\\ScientificActivities.External.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.External\\ScientificActivities.External.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adama\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.17\\microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
+    "C:\\Users\\adama\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.17\\microsoft.windowsdesktop.app.ref.7.0.17.nupkg.sha512",
+    "C:\\Users\\adama\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.17\\microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

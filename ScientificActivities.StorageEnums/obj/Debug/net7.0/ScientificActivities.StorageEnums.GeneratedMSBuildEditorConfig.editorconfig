@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ScientificActivities.StorageEnums
-build_property.ProjectDir = D:\PGU\DiplomWork\d\ScientificActivities-main\ScientificActivities.StorageEnums\
+build_property.ProjectDir = D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

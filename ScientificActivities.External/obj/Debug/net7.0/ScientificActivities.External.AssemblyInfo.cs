@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScientificActivities.External")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdfd0f2f706f49c74fddca91ad81b626574db53f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScientificActivities.External")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScientificActivities.External")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
