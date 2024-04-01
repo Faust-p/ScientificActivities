@@ -1,0 +1,12 @@
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\bin\Debug\net7.0\ScientificActivities.StorageEnums.deps.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\bin\Debug\net7.0\ScientificActivities.StorageEnums.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\bin\Debug\net7.0\ScientificActivities.StorageEnums.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.GeneratedMSBuildEditorConfig.editorconfig
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.AssemblyInfoInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.AssemblyInfo.cs
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.csproj.CoreCompileInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.sourcelink.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\refint\ScientificActivities.StorageEnums.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ScientificActivities.StorageEnums.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.StorageEnums\obj\Debug\net7.0\ref\ScientificActivities.StorageEnums.dll
