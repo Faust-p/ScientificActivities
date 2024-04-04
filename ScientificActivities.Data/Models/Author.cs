@@ -6,7 +6,6 @@ namespace ScientificActivities.Data.Models;
 
 public class Author
 {
-    [Key]
     public long Id { get; set; }
 
     public string FirstName { get; set; } = string.Empty;
