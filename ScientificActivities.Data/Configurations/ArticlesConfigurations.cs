@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ScientificActivities.Data.Models.Tables;
+using ScientificActivities.Data.Models.Publication;
 
 namespace ScientificActivities.Data.Configurations
 {
-    public class ArticlesConfigurations : IEntityTypeConfiguration<Articles>
+    public class ArticlesConfigurations : IEntityTypeConfiguration<Article>
     {
-        public void Configure(EntityTypeBuilder<Articles> builder)
+        public void Configure(EntityTypeBuilder<Article> builder)
         {
             builder.HasKey(x => x.Id);
 

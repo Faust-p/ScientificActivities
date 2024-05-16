@@ -8,7 +8,7 @@ public enum EnumJournalStatus
     RSCI = 0,
 
     /// <summary>
-    /// Входит в РИНЦ
+    /// Входит в ВАК
     /// </summary>
     VAK = 1,
     

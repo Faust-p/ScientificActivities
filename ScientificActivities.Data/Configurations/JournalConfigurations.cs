@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ScientificActivities.Data.Models.Tables;
+using ScientificActivities.Data.Models.Publication;
 
 namespace ScientificActivities.Data.Configurations
 {
