@@ -71,6 +71,9 @@ public class AuthorService : IAuthorService
         authorDb.Contacts = entityRequest.Contacts;
         authorDb.Email = entityRequest.Email;
         
+        
+        await _authorProvider.UpdateAsync(authorDb, cancellationToken);
+        return authorDb;
     }
 
     public async Task<List<Author>> GetAllAsync(CancellationToken cancellationToken)

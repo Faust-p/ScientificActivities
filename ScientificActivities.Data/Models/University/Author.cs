@@ -16,7 +16,6 @@ public class Author : BaseModel
         Department = department;
         EmployeerPosition = position;
         AcademicDegree = degree;
-        //Article = article;
         Articles = new List<ArticlesAuthors>();
     }
 
@@ -35,8 +34,6 @@ public class Author : BaseModel
     public EnumEmployeePosition? EmployeerPosition { get; set; }
 
     public EnumAcademicDegree? AcademicDegree { get; set; }
-    
-    //public Article Article { get; set; }
     
     public List<ArticlesAuthors>? Articles { get; set; }
 }
