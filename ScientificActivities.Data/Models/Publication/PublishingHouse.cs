@@ -9,6 +9,10 @@ public class PublishingHouse : BaseModel
         City = city;
         Journals = new List<Journal>();
     }
+
+    protected PublishingHouse()
+    {
+    }
     
     public string Name { get; set; } = string.Empty;
     

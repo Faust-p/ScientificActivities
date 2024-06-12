@@ -17,6 +17,10 @@ public class User : BaseModel
         //Tokens = new List<MailToken>();
     }
 
+    protected User()
+    {
+    }
+
     public string FirstName { get; set; } = string.Empty;
 
     public string LastName { get; set; } = string.Empty;

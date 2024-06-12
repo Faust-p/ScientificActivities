@@ -8,6 +8,10 @@ public class Faculty : BaseModel
         Departments = new List<Department>();
     }
 
+    protected Faculty()
+    {
+    }
+
     public string Name { get; set; } = string.Empty;
 
     public List<Department> Departments { get; set; } = null!;

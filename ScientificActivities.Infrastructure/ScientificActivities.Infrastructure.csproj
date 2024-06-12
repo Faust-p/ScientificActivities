@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ScientificActivities.Data\ScientificActivities.Data.csproj" />
+      <ProjectReference Include="..\ScientificActivities.Service\ScientificActivities.Service.csproj" />
     </ItemGroup>
 
 </Project>

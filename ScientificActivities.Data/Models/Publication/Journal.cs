@@ -12,6 +12,10 @@ public class Journal : BaseModel
         Articles = new List<Article>();
     }
 
+    protected Journal()
+    {
+    }
+
 
     public string Name { get; set; } = string.Empty;
 

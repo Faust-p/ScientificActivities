@@ -19,6 +19,10 @@ public class Article : BaseModel
         Journal = journal;
         Authors = new List<ArticlesAuthors>();
     }
+
+    protected Article()
+    {
+    }
     
     public string Name { get; set; } 
 

@@ -13,4 +13,8 @@ public class ArticlesAuthors : BaseModel
         Article = article;
         Author = author;
     }
+
+    protected ArticlesAuthors()
+    {
+    }
 }

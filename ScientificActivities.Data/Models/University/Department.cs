@@ -11,6 +11,10 @@ public class Department : BaseModel
         Faculty = faculty;
         Authors = new List<Author>();
     }
+
+    protected Department()
+    {
+    }
     
     public string Name { get; set; } = null!;
 

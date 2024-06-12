@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.Service", "ScientificActivities.Service\ScientificActivities.Service.csproj", "{B2AA6033-A02B-4139-A497-4E81A9BDD3B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.DependencyInjection", "ScientificActivities.DependencyInjection\ScientificActivities.DependencyInjection.csproj", "{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.API", "ScientificActivities.API\ScientificActivities.API.csproj", "{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +34,20 @@ Global
 		{B2AA6033-A02B-4139-A497-4E81A9BDD3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2AA6033-A02B-4139-A497-4E81A9BDD3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2AA6033-A02B-4139-A497-4E81A9BDD3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{46DD6F0F-7B86-43D0-B3CC-13264650A12E} = {27F388CB-4176-4A9E-8437-1481961E3A6A}
 		{45BA7D60-3D0D-4789-A0C4-CC3A0D4EAB62} = {62FF18B6-E593-47AD-87C6-06D1C4D5BFFF}
 		{B2AA6033-A02B-4139-A497-4E81A9BDD3B7} = {16548DF4-74B0-4699-98CB-93941D911FEF}
+		{DD5DE431-292D-4B02-907B-5FBB7C9C8FFF} = {62FF18B6-E593-47AD-87C6-06D1C4D5BFFF}
+		{DDE88F01-E02D-4F1D-AB20-56C3C433DC68} = {62FF18B6-E593-47AD-87C6-06D1C4D5BFFF}
 	EndGlobalSection
 EndGlobal

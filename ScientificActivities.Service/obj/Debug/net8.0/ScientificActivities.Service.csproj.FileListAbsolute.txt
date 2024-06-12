@@ -1,0 +1,16 @@
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\bin\Debug\net8.0\ScientificActivities.Service.deps.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\bin\Debug\net8.0\ScientificActivities.Service.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\bin\Debug\net8.0\ScientificActivities.Service.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\bin\Debug\net8.0\ScientificActivities.Data.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\bin\Debug\net8.0\ScientificActivities.Data.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.csproj.AssemblyReference.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.AssemblyInfoInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.AssemblyInfo.cs
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.csproj.CoreCompileInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.sourcelink.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\Scientif.652F28E1.Up2Date
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\refint\ScientificActivities.Service.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ScientificActivities.Service.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Service\obj\Debug\net8.0\ref\ScientificActivities.Service.dll
