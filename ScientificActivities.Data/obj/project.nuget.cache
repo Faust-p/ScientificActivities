@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cE+ZhzfQHMxP3qJS01i3fr+Pw7bbLFjmKNlKr3J/ZUNFJKmzK/nYsEmRhGpl8bjXJZgZOVfkOyAMoVjOgWrB1A==",
+  "dgSpecHash": "qKQHx65hLPAw4Q/AR3fchZm8gCc0PCsAZ7X++V7PgYUNRtevVdOwGi8/toNd3ZADf6FQ0WEPZZf0n93YO9pfYA==",
   "success": true,
   "projectFilePath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Data\\ScientificActivities.Data.csproj",
   "expectedPackageFiles": [
@@ -63,10 +63,7 @@
     "C:\\Users\\adama\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\adama\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\adama\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.17\\microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\adama\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.17\\microsoft.windowsdesktop.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\adama\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.17\\microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512"
+    "C:\\Users\\adama\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

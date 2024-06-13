@@ -1,0 +1,15 @@
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\bin\Debug\net8.0\ScientificActivities.Data.deps.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\bin\Debug\net8.0\ScientificActivities.Data.runtimeconfig.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\bin\Debug\net8.0\ScientificActivities.Data.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\bin\Debug\net8.0\ScientificActivities.Data.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.csproj.AssemblyReference.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.AssemblyInfoInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.AssemblyInfo.cs
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.csproj.CoreCompileInputs.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.sourcelink.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\refint\ScientificActivities.Data.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ScientificActivities.Data.genruntimeconfig.cache
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Data\obj\Debug\net8.0\ref\ScientificActivities.Data.dll

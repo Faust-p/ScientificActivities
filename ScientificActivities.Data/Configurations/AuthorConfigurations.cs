@@ -1,6 +1,7 @@
 ﻿using ScientificActivities.Data.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using ScientificActivities.Data.Models.University;
 
 namespace ScientificActivities.Data.Configurations;
 
@@ -10,9 +11,11 @@ public class AuthorConfigurations :
     public void Configure(EntityTypeBuilder<Author> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.HasOne(x => x.Department)
-            .WithMany(x => x.Authors)
-            .HasForeignKey(x => x.DepartmentId)
-            .IsRequired(false);
+        
+        builder.HasOne(a => a.Department)
+            .WithMany(d => d.Authors);
+        
+        builder.HasMany(a => a.Articles)
+            .WithOne(aa => aa.Author);
     }
 }

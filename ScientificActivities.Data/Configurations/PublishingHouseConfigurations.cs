@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ScientificActivities.Data.Models.Tables;
+using ScientificActivities.Data.Models.Publication;
 
 namespace ScientificActivities.Data.Configurations
 {
@@ -9,6 +9,11 @@ namespace ScientificActivities.Data.Configurations
         public void Configure(EntityTypeBuilder<PublishingHouse> builder)
         {
             builder.HasKey(x => x.Id);
+            
+            // Настройка связи с Journal
+            builder.HasMany(ph => ph.Journals)
+                .WithOne(j => j.PublishingHouse)
+                .IsRequired();
         }
     }
 }
