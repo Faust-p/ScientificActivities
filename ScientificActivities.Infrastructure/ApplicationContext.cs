@@ -38,7 +38,7 @@ public sealed class ApplicationContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=Test;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=.;Database=ScientificActivities;Trusted_Connection=True;TrustServerCertificate=True");
 
         }
     }

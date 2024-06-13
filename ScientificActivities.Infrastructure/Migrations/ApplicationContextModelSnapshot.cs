@@ -8,7 +8,7 @@ using ScientificActivities.Infrastructure;
 
 #nullable disable
 
-namespace ScientificActivities.Data.Migrations
+namespace ScientificActivities.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot

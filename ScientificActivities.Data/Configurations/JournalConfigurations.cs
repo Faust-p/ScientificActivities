@@ -17,12 +17,6 @@ namespace ScientificActivities.Data.Configurations
             builder.HasMany(j => j.Articles)
                 .WithOne(a => a.Journal)
                 .IsRequired();
-            
-            /*
-            builder.HasOne(x => x.PublishingHouse)
-                .WithMany(x => x.Journals)
-                .HasForeignKey(x => x.PublishingHouseId)
-                .IsRequired();*/
         }
     }
 }

@@ -10,9 +10,5 @@ public class MailTokenConfiguration :
     public void Configure(EntityTypeBuilder<MailToken> builder)
     {
         builder.HasKey(x => x.Id);
-        /*
-        builder.HasOne(x => x.User)
-            .WithMany(x => x.Tokens)
-            .HasForeignKey(x => x.UserId);*/
     }
 }

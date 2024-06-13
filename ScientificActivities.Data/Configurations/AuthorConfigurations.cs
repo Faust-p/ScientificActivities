@@ -17,10 +17,5 @@ public class AuthorConfigurations :
         
         builder.HasMany(a => a.Articles)
             .WithOne(aa => aa.Author);
-            /*
-        builder.HasOne(x => x.Department)
-            .WithMany(x => x.Authors)
-            .HasForeignKey(x => x.DepartmentId)
-            .IsRequired(false);*/
     }
 }

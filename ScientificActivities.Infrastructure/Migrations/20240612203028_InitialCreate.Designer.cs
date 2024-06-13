@@ -9,7 +9,7 @@ using ScientificActivities.Infrastructure;
 
 #nullable disable
 
-namespace ScientificActivities.Data.Migrations
+namespace ScientificActivities.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     [Migration("20240612203028_InitialCreate")]
