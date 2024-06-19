@@ -55,4 +55,9 @@ public class PublishingHouseService : IPublishingHouseService
         {
             return await _publishingHouseProvider.GetAllAsync(cancellationToken);
         }
+        
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _publishingHouseProvider.DeleteAsync(id, cancellationToken);
+        }
 }

@@ -80,4 +80,9 @@ public class AuthorService : IAuthorService
     {
         return await _authorProvider.GetAllAsync(new CancellationToken());
     }
+    
+    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        await _authorProvider.DeleteAsync(id, cancellationToken);
+    }
 }

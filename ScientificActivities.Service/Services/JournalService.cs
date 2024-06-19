@@ -72,4 +72,8 @@ public class JournalService : IJournalService
         {
             return await _journalProvider.GetAllAsync(cancellationToken);
         }
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _journalProvider.DeleteAsync(id, cancellationToken);
+        }
 }

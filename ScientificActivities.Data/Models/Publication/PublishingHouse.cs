@@ -20,5 +20,5 @@ public class PublishingHouse : BaseModel
     
     public string City { get; set; }
     
-    public List<Journal> Journals { get; set; } = null!;
+    public List<Journal> Journals { get; set; } 
 }

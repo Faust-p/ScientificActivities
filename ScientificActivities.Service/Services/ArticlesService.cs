@@ -23,7 +23,7 @@ public class ArticlesService : IArticlesService
     public async Task<Guid> CreateAsync(ArticlesRequest entityRequest, CancellationToken cancellationToken)
     {
         if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
-            throw new ExistIsEntityException("Такая статья существует");
+            throw new ExistIsEntityException("Такая статья уже существует");
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
         if (journal == null)
             throw new MissingDivisionException("Такого журнала не существует");
@@ -76,5 +76,10 @@ public class ArticlesService : IArticlesService
     public async Task<List<Article>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _articlesProvider.GetAllAsync(new CancellationToken());
+    }
+    
+    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        await _articlesProvider.DeleteAsync(id, cancellationToken);
     }
 }

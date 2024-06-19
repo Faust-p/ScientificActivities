@@ -62,4 +62,8 @@ public class UserService : IUserService
         {
             return await _userProvider.GetAllAsync(cancellationToken);
         }
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _userProvider.DeleteAsync(id, cancellationToken);
+        }
 }
