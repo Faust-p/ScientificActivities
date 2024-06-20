@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScientificActivities.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7064a0402659b15e42878761add12fc0eeb6dcf6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b42a742c65b06026cd9d3e9aa1cdbd0272eb1f8f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScientificActivities.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScientificActivities.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

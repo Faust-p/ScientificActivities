@@ -5,5 +5,5 @@ namespace ScientificActivities.Service.Services.Interface.Services;
 
 public interface IArticlesService : IBaseNameService<Article, ArticlesRequest>
 {
-    
+    Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken);
 }

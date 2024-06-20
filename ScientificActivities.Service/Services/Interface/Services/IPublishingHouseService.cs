@@ -5,5 +5,5 @@ namespace ScientificActivities.Service.Services.Interface.Services;
 
 public interface IPublishingHouseService : IBaseNameService<PublishingHouse, PublishingHouseRequest>
 {
-    
+    Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken);
 }

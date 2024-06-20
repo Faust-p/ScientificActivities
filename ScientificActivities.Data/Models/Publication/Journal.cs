@@ -21,8 +21,6 @@ public class Journal : BaseModel
 
     public PublishingHouse PublishingHouse { get; set; }
     public EnumJournalStatus Status { get; }
-
-    
     
     public List<Article> Articles { get; set; } = null!;
 }

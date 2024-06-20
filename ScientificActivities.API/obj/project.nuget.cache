@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "5F9Y/0v9T8ut9GotSRJRUDmlfMFMkn2ntMCKEq35l3RG3D/MAWG9qnyKFZuXYNw3EgyDTLojD2fqeZdSRyXokg==",
+  "dgSpecHash": "hwtdKKHGdUb6GNEQ2MenbDYPorTXP277irnQ7ssObRO2rJr7GWd9nn65RSg/yXO8N0H/1BI79xkggkAeEyCNUA==",
   "success": true,
   "projectFilePath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.API\\ScientificActivities.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adama\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\adama\\.nuget\\packages\\htmlagilitypack\\1.11.61\\htmlagilitypack.1.11.61.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.6\\microsoft.aspnetcore.jsonpatch.8.0.6.nupkg.sha512",
     "C:\\Users\\adama\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.6\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.6.nupkg.sha512",

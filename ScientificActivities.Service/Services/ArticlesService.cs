@@ -3,6 +3,7 @@ using ScientificActivities.Service.Converters;
 using ScientificActivities.Service.CustomException;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers;
+using ScientificActivities.Service.Services.Interface.Providers.Parsers;
 using ScientificActivities.Service.Services.Interface.Services;
 using ScientificActivities.StorageEnums;
 
@@ -12,16 +13,38 @@ public class ArticlesService : IArticlesService
 {
     private readonly IArticlesProvider _articlesProvider;
     private readonly IJournalProvider _journalProvider;
+    private readonly IArticleParseProvider _articleParseProvider;
 
-    public ArticlesService(IArticlesProvider articlesProvider, IJournalProvider journalProvider)
+    public ArticlesService(IArticlesProvider articlesProvider, IJournalProvider journalProvider, IArticleParseProvider articleParseProvider)
     {
         _articlesProvider = articlesProvider;
         _journalProvider = journalProvider;
+        _articleParseProvider = articleParseProvider;
     }
 
 
     public async Task<Guid> CreateAsync(ArticlesRequest entityRequest, CancellationToken cancellationToken)
     {
+        if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
+            throw new ExistIsEntityException("Такая статья уже существует");
+        var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
+        if (journal == null)
+            throw new MissingDivisionException("Такого журнала не существует");
+        var articlesDb = new Article(entityRequest.Name,
+            entityRequest.Number,
+            entityRequest.Year,
+            entityRequest.Pages,
+            (EnumRSCI) Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+            (EnumVAK) Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            journal);
+        await _articlesProvider.AddAsync(articlesDb, cancellationToken);
+        return articlesDb.Id;
+    }
+
+    public async Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken)
+    {
+        var entityRequest = await _articleParseProvider.ParseAsync(url, cancellationToken);
+        
         if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
             throw new ExistIsEntityException("Такая статья уже существует");
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);

@@ -1,5 +1,4 @@
-﻿using ScientificActivities.Data.Models.Publication;
-
+﻿
 namespace ScientificActivities.Service.ModelRequest.Publication;
 
 public class ArticlesRequest : BaseModelRequest
@@ -18,5 +17,5 @@ public class ArticlesRequest : BaseModelRequest
     
     public Guid JournalId { get; set; }
     
-    public List<ArticleAuthorsRequest> AuthorsList { get; set; }
+    //public List<ArticleAuthorsRequest> AuthorsList { get; set; }
 }

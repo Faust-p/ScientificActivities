@@ -83,4 +83,6 @@ D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\bin\Debug\ne
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\obj\Debug\net8.0\ScientificActivities.API.csproj.AssemblyReference.cache
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\obj\Debug\net8.0\ScientificActivities.API.MvcApplicationPartsAssemblyInfo.cs
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\obj\Debug\net8.0\Scientif.0ACA62F2.Up2Date
-D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\bin\Debug\net8.0\HtmlAgilityPack.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\bin\Debug\net8.0\Parsers.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.API\bin\Debug\net8.0\Parsers.pdb

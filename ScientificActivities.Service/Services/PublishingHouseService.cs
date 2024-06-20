@@ -2,6 +2,7 @@
 using ScientificActivities.Service.CustomException;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers;
+using ScientificActivities.Service.Services.Interface.Providers.Parsers;
 using ScientificActivities.Service.Services.Interface.Services;
 
 namespace ScientificActivities.Service.Services;
@@ -9,9 +10,30 @@ namespace ScientificActivities.Service.Services;
 public class PublishingHouseService : IPublishingHouseService
 {
     private readonly IPublishingHouseProvider _publishingHouseProvider;
+    private readonly IPublishingHouseParseProvider _publishingHouseParseProvider;
 
-     public async Task<Guid> CreateAsync(PublishingHouseRequest entityRequest, CancellationToken cancellationToken)
+    public PublishingHouseService(IPublishingHouseProvider publishingHouseProvider, IPublishingHouseParseProvider publishingHouseParseProvider)
+    {
+        _publishingHouseProvider = publishingHouseProvider;
+        _publishingHouseParseProvider = publishingHouseParseProvider;
+    }
+
+    public async Task<Guid> CreateAsync(PublishingHouseRequest entityRequest, CancellationToken cancellationToken)
         {
+            if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
+                throw new ExistIsEntityException("Такое издательство уже существует");
+
+            var publishingHouseDb = new PublishingHouse(entityRequest.Name,
+                entityRequest.Country,
+                entityRequest.City);
+            await _publishingHouseProvider.AddAsync(publishingHouseDb, cancellationToken);
+            return publishingHouseDb.Id;
+        }
+
+        public async Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken)
+        {
+            var entityRequest = await _publishingHouseParseProvider.ParseAsync(url, cancellationToken);
+            
             if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
                 throw new ExistIsEntityException("Такое издательство уже существует");
 
