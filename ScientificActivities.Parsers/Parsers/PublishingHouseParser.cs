@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using ScientificActivities.Service.ModelRequest.Publication;
 
-namespace Parsers.Parsers;
+namespace ScientificActivities.Parsers.Parsers;
 
 /// <summary>
 /// Парсер для "КАРТОЧКА  ИЗДАТЕЛЬСТВА"

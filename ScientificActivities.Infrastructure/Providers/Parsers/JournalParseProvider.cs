@@ -1,5 +1,5 @@
-﻿using Parsers;
-using Parsers.Parsers;
+﻿using ScientificActivities.Parsers;
+using ScientificActivities.Parsers.Parsers;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers.Parsers;
 

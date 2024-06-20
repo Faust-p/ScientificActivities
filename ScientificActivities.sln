@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.Depend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.API", "ScientificActivities.API\ScientificActivities.API.csproj", "{DDE88F01-E02D-4F1D-AB20-56C3C433DC68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsers", "Parsers\Parsers.csproj", "{8C25BD04-9B54-44EC-AC6B-BD2D14828779}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScientificActivities.Parsers", "ScientificActivities.Parsers\ScientificActivities.Parsers.csproj", "{8C25BD04-9B54-44EC-AC6B-BD2D14828779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

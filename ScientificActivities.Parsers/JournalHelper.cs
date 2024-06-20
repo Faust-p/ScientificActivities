@@ -1,8 +1,8 @@
 ﻿using HtmlAgilityPack;
-using Parsers.Parsers;
+using ScientificActivities.Parsers.Parsers;
 using ScientificActivities.Service.ModelRequest.Publication;
 
-namespace Parsers;
+namespace ScientificActivities.Parsers;
 
 public static class JournalHelper
 {

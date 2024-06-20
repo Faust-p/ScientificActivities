@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using HtmlAgilityPack;
 
-namespace Parsers;
+namespace ScientificActivities.Parsers;
 
 public class WebClientHelper
 {

@@ -2,7 +2,7 @@
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.StorageEnums;
 
-namespace Parsers.Parsers;
+namespace ScientificActivities.Parsers.Parsers;
 
 /// <summary>
 /// Парсер для "ИНФОРМАЦИЯ О ЖУРНАЛЕ"

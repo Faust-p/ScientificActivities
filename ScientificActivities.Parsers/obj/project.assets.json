@@ -2723,11 +2723,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\Parsers\\Parsers.csproj",
-      "projectName": "Parsers",
-      "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\Parsers\\Parsers.csproj",
+      "projectUniqueName": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Parsers\\ScientificActivities.Parsers.csproj",
+      "projectName": "ScientificActivities.Parsers",
+      "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Parsers\\ScientificActivities.Parsers.csproj",
       "packagesPath": "C:\\Users\\adama\\.nuget\\packages\\",
-      "outputPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\Parsers\\obj\\",
+      "outputPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Parsers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

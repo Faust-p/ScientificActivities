@@ -974,20 +974,6 @@
           }
         }
       },
-      "Parsers/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "HtmlAgilityPack": "1.11.61",
-          "ScientificActivities.Service": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Parsers.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Parsers.dll": {}
-        }
-      },
       "ScientificActivities.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1001,6 +987,20 @@
         },
         "runtime": {
           "bin/placeholder/ScientificActivities.Data.dll": {}
+        }
+      },
+      "ScientificActivities.Parsers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "HtmlAgilityPack": "1.11.61",
+          "ScientificActivities.Service": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ScientificActivities.Parsers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ScientificActivities.Parsers.dll": {}
         }
       },
       "ScientificActivities.Service/1.0.0": {
@@ -2713,15 +2713,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Parsers/1.0.0": {
-      "type": "project",
-      "path": "../Parsers/Parsers.csproj",
-      "msbuildProject": "../Parsers/Parsers.csproj"
-    },
     "ScientificActivities.Data/1.0.0": {
       "type": "project",
       "path": "../ScientificActivities.Data/ScientificActivities.Data.csproj",
       "msbuildProject": "../ScientificActivities.Data/ScientificActivities.Data.csproj"
+    },
+    "ScientificActivities.Parsers/1.0.0": {
+      "type": "project",
+      "path": "../ScientificActivities.Parsers/ScientificActivities.Parsers.csproj",
+      "msbuildProject": "../ScientificActivities.Parsers/ScientificActivities.Parsers.csproj"
     },
     "ScientificActivities.Service/1.0.0": {
       "type": "project",
@@ -2731,8 +2731,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Parsers >= 1.0.0",
       "ScientificActivities.Data >= 1.0.0",
+      "ScientificActivities.Parsers >= 1.0.0",
       "ScientificActivities.Service >= 1.0.0"
     ]
   },
@@ -2768,11 +2768,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\Parsers\\Parsers.csproj": {
-              "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\Parsers\\Parsers.csproj"
-            },
             "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Data\\ScientificActivities.Data.csproj": {
               "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Data\\ScientificActivities.Data.csproj"
+            },
+            "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Parsers\\ScientificActivities.Parsers.csproj": {
+              "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Parsers\\ScientificActivities.Parsers.csproj"
             },
             "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Service\\ScientificActivities.Service.csproj": {
               "projectPath": "D:\\PGU\\DiplomWork\\git\\ScientificActivities\\ScientificActivities.Service\\ScientificActivities.Service.csproj"

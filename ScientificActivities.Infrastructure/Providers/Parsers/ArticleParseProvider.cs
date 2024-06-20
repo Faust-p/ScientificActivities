@@ -1,4 +1,4 @@
-﻿using Parsers;
+﻿using ScientificActivities.Parsers;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers.Parsers;
 
