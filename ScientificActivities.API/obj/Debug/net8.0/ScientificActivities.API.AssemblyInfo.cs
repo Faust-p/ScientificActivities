@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScientificActivities.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b42a742c65b06026cd9d3e9aa1cdbd0272eb1f8f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69c9f7d9acda98f0c0e2fe928e40c367651d145f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScientificActivities.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScientificActivities.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
