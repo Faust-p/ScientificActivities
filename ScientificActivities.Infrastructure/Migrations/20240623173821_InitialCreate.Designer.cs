@@ -12,7 +12,7 @@ using ScientificActivities.Infrastructure;
 namespace ScientificActivities.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240612203028_InitialCreate")]
+    [Migration("20240623173821_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,37 +20,10 @@ namespace ScientificActivities.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.15")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ScientificActivities.Data.Models.MailToken", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("DateExpire")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("Key")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid>("UserId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("MailToken");
-                });
 
             modelBuilder.Entity("ScientificActivities.Data.Models.Publication.Article", b =>
                 {
@@ -272,6 +245,31 @@ namespace ScientificActivities.Infrastructure.Migrations
                     b.ToTable("Faculties");
                 });
 
+            modelBuilder.Entity("ScientificActivities.Data.Models.UserActivity.MailToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateExpire")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateChange")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MailToken");
+                });
+
             modelBuilder.Entity("ScientificActivities.Data.Models.UserActivity.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -293,6 +291,14 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
@@ -309,17 +315,6 @@ namespace ScientificActivities.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ScientificActivities.Data.Models.MailToken", b =>
-                {
-                    b.HasOne("ScientificActivities.Data.Models.UserActivity.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ScientificActivities.Data.Models.Publication.Article", b =>
@@ -383,6 +378,17 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Faculty");
+                });
+
+            modelBuilder.Entity("ScientificActivities.Data.Models.UserActivity.MailToken", b =>
+                {
+                    b.HasOne("ScientificActivities.Data.Models.UserActivity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ScientificActivities.Data.Models.Publication.Article", b =>

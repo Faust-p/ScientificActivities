@@ -16,5 +16,7 @@ D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\o
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\obj\Debug\net8.0\refint\ScientificActivities.Infrastructure.dll
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\obj\Debug\net8.0\ScientificActivities.Infrastructure.pdb
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\obj\Debug\net8.0\ref\ScientificActivities.Infrastructure.dll
-D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\bin\Debug\net8.0\Parsers.dll
-D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\bin\Debug\net8.0\Parsers.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\bin\Debug\net8.0\ScientificActivities.Parsers.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\bin\Debug\net8.0\ScientificActivities.Parsers.pdb
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\bin\Debug\net8.0\ScientificActivities.Infrastructure.runtimeconfig.json
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.Infrastructure\obj\Debug\net8.0\ScientificActivities.Infrastructure.genruntimeconfig.cache

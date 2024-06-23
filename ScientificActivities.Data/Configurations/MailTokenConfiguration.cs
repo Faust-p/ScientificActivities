@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ScientificActivities.Data.Models;
+using ScientificActivities.Data.Models.UserActivity;
 
 namespace ScientificActivities.Data.Configurations;
 
