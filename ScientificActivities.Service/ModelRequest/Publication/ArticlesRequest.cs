@@ -17,5 +17,7 @@ public class ArticlesRequest : BaseModelRequest
     
     public Guid JournalId { get; set; }
     
+    public string JounalName { get; set; }
+    
     //public List<ArticleAuthorsRequest> AuthorsList { get; set; }
 }

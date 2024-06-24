@@ -12,7 +12,7 @@ public class Faculty : BaseModel
     {
     }
 
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; }
 
-    public List<Department> Departments { get; set; } = null!;
+    public List<Department> Departments { get; set; } = new List<Department>();
 }

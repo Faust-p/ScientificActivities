@@ -22,9 +22,19 @@ public class DepartmentService : IDepartmentService
         if (await _departmentProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
             throw new ExistIsEntityException("Такая кафедра уже существует");
 
-        var faculty = await _facultyProvider.FindAsync(entityRequest.FacultyId, cancellationToken);
-        if (faculty == null)
-            throw new MissingDivisionException("Такого факультета не существует");
+        Faculty faculty;
+        if (string.IsNullOrWhiteSpace(entityRequest.FacultyName))
+        {
+            faculty = await _facultyProvider.FindAsync(entityRequest.FacultyId, cancellationToken);
+            if (faculty == null)
+                throw new MissingDivisionException("Такого факультета не существует");
+        }
+        else
+        {
+            faculty = await _facultyProvider.FindAsync(entityRequest.FacultyName, cancellationToken);
+            if (faculty == null)
+                throw new MissingDivisionException("Такого факультета не существует");
+        }
 
         var departmentDb = new Department(entityRequest.Name, faculty);
         await _departmentProvider.AddAsync(departmentDb, cancellationToken);

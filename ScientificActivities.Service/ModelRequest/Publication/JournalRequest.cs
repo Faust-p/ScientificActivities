@@ -7,4 +7,6 @@ public class JournalRequest : BaseModelRequest
     public Guid PublishingHouseId { get; set; }
     
     public string Status { get; set; }
+    
+    public string? PublishingHouseName { get; set; }
 }

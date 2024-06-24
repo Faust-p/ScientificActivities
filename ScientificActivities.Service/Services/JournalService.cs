@@ -31,14 +31,29 @@ public class JournalService : IJournalService
                 return existingJournal.Id;
                 //throw new ExistIsEntityException("Такой журнал уже существует");
 
-            var publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
+                
+                PublishingHouse publishingHouse;
+                if (string.IsNullOrWhiteSpace(entityRequest.PublishingHouseName))
+                {
+                    publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
+                    if (publishingHouse == null)
+                        throw new MissingDivisionException("Такого журнала не существует");
+                }
+                else
+                {
+                    publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseName, cancellationToken);
+                    if (publishingHouse == null)
+                        throw new MissingDivisionException("Такого журнала не существует");
+                }
+                
+                
+            /*var publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
             if (publishingHouse == null)
-                throw new MissingDivisionException("Такого издательства не существует");
+                throw new MissingDivisionException("Такого издательства не существует");*/
 
             var journalDb = new Journal(entityRequest.Name, 
                 publishingHouse,
-                (EnumJournalStatus) Enum.Parse(typeof(EnumJournalStatus), 
-                entityRequest.Status, true));
+                (EnumJournalStatus) Enum.Parse(typeof(EnumJournalStatus), entityRequest.Status, true));
             await _journalProvider.AddAsync(journalDb, cancellationToken);
             return journalDb.Id;
         }

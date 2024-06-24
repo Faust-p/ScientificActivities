@@ -15,7 +15,8 @@ public class ArticlesService : IArticlesService
     private readonly IJournalProvider _journalProvider;
     private readonly IArticleParseProvider _articleParseProvider;
 
-    public ArticlesService(IArticlesProvider articlesProvider, IJournalProvider journalProvider, IArticleParseProvider articleParseProvider)
+    public ArticlesService(IArticlesProvider articlesProvider, IJournalProvider journalProvider,
+        IArticleParseProvider articleParseProvider)
     {
         _articlesProvider = articlesProvider;
         _journalProvider = journalProvider;
@@ -28,18 +29,29 @@ public class ArticlesService : IArticlesService
         var existingArticle = await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken);
         if (existingArticle != null)
             return existingArticle.Id;
-            //throw new ExistIsEntityException("Такая статья уже существует");
-        
-        
-        var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
-        if (journal == null)
-            throw new MissingDivisionException("Такого журнала не существует");
+        //throw new ExistIsEntityException("Такая статья уже существует");
+
+
+        Journal journal;
+        if (string.IsNullOrWhiteSpace(entityRequest.JounalName))
+        {
+            journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
+            if (journal == null)
+                throw new MissingDivisionException("Такой статьи не существует");
+        }
+        else
+        {
+            journal = await _journalProvider.FindAsync(entityRequest.JounalName, cancellationToken);
+            if (journal == null)
+                throw new MissingDivisionException("Такой статьи не существует");
+        }
+
         var articlesDb = new Article(entityRequest.Name,
             entityRequest.Number,
             entityRequest.Year,
             entityRequest.Pages,
-            (EnumRSCI) Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
-            (EnumVAK) Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+            (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
             journal);
         await _articlesProvider.AddAsync(articlesDb, cancellationToken);
         return articlesDb.Id;
@@ -48,18 +60,18 @@ public class ArticlesService : IArticlesService
     public async Task<Guid> ParseAsync(string url, CancellationToken cancellationToken)
     {
         var entityRequest = await _articleParseProvider.ParseAsync(url, cancellationToken);
-        
+
         if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
             throw new ExistIsEntityException("Такая статья уже существует");
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
-        /*if (journal == null)
-            throw new MissingDivisionException("Такого журнала не существует");*/
+        if (journal == null)
+            throw new MissingDivisionException("Такого журнала не существует");
         var articlesDb = new Article(entityRequest.Name,
             entityRequest.Number,
             entityRequest.Year,
             entityRequest.Pages,
-            (EnumRSCI) Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
-            (EnumVAK) Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+            (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
             journal);
         await _articlesProvider.AddAsync(articlesDb, cancellationToken);
         return articlesDb.Id;
@@ -80,31 +92,41 @@ public class ArticlesService : IArticlesService
             throw new NotExistException("Такой статьи не существует");
         return articles;
     }
-    
+
     public async Task<Article> UpdateAsync(ArticlesRequest entityRequest, CancellationToken cancellationToken)
     {
         var articlesDb = await GetAsync(entityRequest.Id, cancellationToken);
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
         if (journal == null)
             throw new MissingDirectionException("Такого журнала не существует");
-        
-        var newArticlesDb = ArticlesConverter.ConverterArticlesRequest(entityRequest, journal);
+
+        /*var newArticlesDb = ArticlesConverter.ConverterArticlesRequest(entityRequest, journal);
         articlesDb.Name = newArticlesDb.Name;
         articlesDb.Number = newArticlesDb.Number;
         articlesDb.Year = newArticlesDb.Year;
         articlesDb.Pages = newArticlesDb.Pages;
         articlesDb.Rsci = newArticlesDb.Rsci;
         articlesDb.Vak = newArticlesDb.Vak;
-        articlesDb.UpdateChange = DateTime.Now;
+        articlesDb.UpdateChange = DateTime.Now;*/
+
+        var db = new Article(entityRequest.Name,
+            entityRequest.Number,
+            entityRequest.Year,
+            entityRequest.Pages,
+            (EnumRSCI) Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+            (EnumVAK) Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            journal);
+
         await _articlesProvider.UpdateAsync(articlesDb, cancellationToken);
         return articlesDb;
     }
+
 
     public async Task<List<Article>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _articlesProvider.GetAllAsync(new CancellationToken());
     }
-    
+
     public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         await _articlesProvider.DeleteAsync(id, cancellationToken);

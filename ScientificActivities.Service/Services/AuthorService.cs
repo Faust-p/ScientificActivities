@@ -32,7 +32,7 @@ public class AuthorService : IAuthorService
             throw new MissingDivisionException("Не указана кафедра");
         var articles = await _articlesProvider.FindAsync(entityRequest.ArticlesId, cancellationToken);
         if (articles == null)
-            throw new MissingDivisionException("Не указана статься");
+            throw new MissingDivisionException("Не указана статья");
         var authorDb = new Author(entityRequest.FirstName,
             entityRequest.LastName,
             entityRequest.SureName,

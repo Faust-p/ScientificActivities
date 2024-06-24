@@ -4,10 +4,6 @@ namespace ScientificActivities.Data.Models.Publication;
 
 public class ArticlesAuthors : BaseModel
 {
-    public Article Article { get; set; } = null!;
-
-    public Author Author { get; set; } = null!;
-    
     public ArticlesAuthors(Article article, Author author)
     {
         Article = article;
@@ -17,4 +13,8 @@ public class ArticlesAuthors : BaseModel
     protected ArticlesAuthors()
     {
     }
+
+    public Article Article { get; set; } = null!;
+
+    public Author Author { get; set; } = null!;
 }
