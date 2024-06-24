@@ -6,7 +6,7 @@ namespace ScientificActivities.Data.Models.University;
 public class Author : BaseModel
 {
     public Author(string firstName, string lastName, string sureName, string contacts, string email, 
-        Department department, EnumEmployeePosition position, EnumAcademicDegree degree, Article article)
+        Department department, EnumEmployeePosition position, EnumAcademicDegree degree)
     {
         FirstName = firstName;
         LastName = lastName;
