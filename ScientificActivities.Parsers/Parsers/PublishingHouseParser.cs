@@ -9,7 +9,7 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class PublishingHouseParser
 {
-   public static PublishingHouseRequest ParseByPublishinHouse(string url)
+   public static PublishingHouseRequest? ParseByPublishingHouse(string url)
         {
             // Создаем объект HtmlWeb для загрузки HTML-кода страницы
             HtmlWeb web = WebClientHelper.CreateWebClient();
@@ -27,7 +27,7 @@ public class PublishingHouseParser
             
             if (cardNode == null)
             {
-                throw new InvalidOperationException("Карточка издательства не найдена.");
+                return null;
             }
             
             // Парсинг данных о стране, регионе, городе с помощью регулярного выражения

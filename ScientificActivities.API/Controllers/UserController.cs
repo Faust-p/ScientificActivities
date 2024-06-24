@@ -16,6 +16,6 @@ public class UserController : BaseController<User, UserRequest, IUserService>
     [HttpPost("Login")]
     public async Task<Token> Login(UserLoginRequest entityRequest)
     {
-        return await _userService.LoginAsync(entityRequest ,new CancellationToken());
+        return await _userService.LoginAsync(entityRequest , new CancellationToken());
     }
 }

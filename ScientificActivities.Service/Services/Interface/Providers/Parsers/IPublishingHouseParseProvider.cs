@@ -2,7 +2,7 @@
 
 namespace ScientificActivities.Service.Services.Interface.Providers.Parsers;
 
-public interface IPublishingHouseParseProvider : IParseProvider<PublishingHouseRequest>
+public interface IPublishingHouseParseProvider : IBaseParseProvider<PublishingHouseRequest>
 {
     
 }

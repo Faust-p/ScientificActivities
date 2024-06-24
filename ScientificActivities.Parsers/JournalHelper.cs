@@ -6,7 +6,7 @@ namespace ScientificActivities.Parsers;
 
 public static class JournalHelper
 {
-    public static JournalRequest TypeOfJournal(string url)
+    public static (JournalRequest, string? publisherUrl, string? publisherName) TypeOfJournal(string url)
     {
         HtmlWeb web = WebClientHelper.CreateWebClient();
 
@@ -27,13 +27,13 @@ public static class JournalHelper
         {
             Console.WriteLine("Это страница с ИНФОРМАЦИЕЙ О ЖУРНАЛЕ.");
                     
-            return JournalParser.ParseByJournal(url, htmlDoc);
+            return JournalParser.ParseByJournal(htmlDoc);
         }
         else if (infoAboutPublication != null)
         {
             Console.WriteLine("Это страница с ИНФОРМАЦИЕЙ ОБ ИЗДАНИИ.");
                     
-            return PublicationInformationParser.ParseByPublicationInformation(url, htmlDoc);
+            return PublicationInformationParser.ParseByPublicationInformation(htmlDoc);
         }
         else if (infoAboutConference != null)
         {
@@ -41,7 +41,7 @@ public static class JournalHelper
             {
                 Console.WriteLine("Это страница со сборником трудов конференции.");
                 
-                return ConferenceCollectionParser.ParseByConferenceCollection(url, htmlDoc);
+                return ConferenceCollectionParser.ParseByConferenceCollection(htmlDoc);
             }
         }
            throw new InvalidOperationException("Не удалось определить тип страницы.");

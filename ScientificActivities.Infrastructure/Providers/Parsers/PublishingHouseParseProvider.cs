@@ -8,7 +8,7 @@ public class PublishingHouseParseProvider : IPublishingHouseParseProvider
 {
     public Task<PublishingHouseRequest> ParseAsync(string url, CancellationToken cancellationToken)
     {
-        var parserResult = PublishingHouseParser.ParseByPublishinHouse(url);
+        var parserResult = PublishingHouseParser.ParseByPublishingHouse(url);
         
         var publishingHouseRequest = new PublishingHouseRequest
         {

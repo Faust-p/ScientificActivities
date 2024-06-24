@@ -25,8 +25,12 @@ public class ArticlesService : IArticlesService
 
     public async Task<Guid> CreateAsync(ArticlesRequest entityRequest, CancellationToken cancellationToken)
     {
-        if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
-            throw new ExistIsEntityException("Такая статья уже существует");
+        var existingArticle = await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken);
+        if (existingArticle != null)
+            return existingArticle.Id;
+            //throw new ExistIsEntityException("Такая статья уже существует");
+        
+        
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
         if (journal == null)
             throw new MissingDivisionException("Такого журнала не существует");
@@ -41,15 +45,15 @@ public class ArticlesService : IArticlesService
         return articlesDb.Id;
     }
 
-    public async Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken)
+    public async Task<Guid> ParseAsync(string url, CancellationToken cancellationToken)
     {
         var entityRequest = await _articleParseProvider.ParseAsync(url, cancellationToken);
         
         if (await _articlesProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
             throw new ExistIsEntityException("Такая статья уже существует");
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
-        if (journal == null)
-            throw new MissingDivisionException("Такого журнала не существует");
+        /*if (journal == null)
+            throw new MissingDivisionException("Такого журнала не существует");*/
         var articlesDb = new Article(entityRequest.Name,
             entityRequest.Number,
             entityRequest.Year,

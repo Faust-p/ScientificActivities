@@ -23,6 +23,7 @@ public static partial class ServiceCollectionExtensions
         service.AddScoped<IArticleParseProvider, ArticleParseProvider>();
         service.AddScoped<IJournalParseProvider, JournalParseProvider>();
         service.AddScoped<IPublishingHouseParseProvider, PublishingHouseParseProvider>();
+        service.AddScoped<IParseProvider, ParseProvider>();
         
         return service;
     }

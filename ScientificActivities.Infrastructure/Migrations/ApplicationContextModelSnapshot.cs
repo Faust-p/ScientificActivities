@@ -31,7 +31,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("JournalId")
+                    b.Property<Guid?>("JournalId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -39,11 +39,9 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Number")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Pages")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Rsci")
@@ -55,7 +53,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                     b.Property<int?>("Vak")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Year")
+                    b.Property<DateTime?>("Year")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -105,7 +103,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublishingHouseId")
+                    b.Property<Guid?>("PublishingHouseId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdateChange")
@@ -125,11 +123,9 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreate")
@@ -318,9 +314,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                 {
                     b.HasOne("ScientificActivities.Data.Models.Publication.Journal", "Journal")
                         .WithMany("Articles")
-                        .HasForeignKey("JournalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("JournalId");
 
                     b.Navigation("Journal");
                 });
@@ -348,9 +342,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                 {
                     b.HasOne("ScientificActivities.Data.Models.Publication.PublishingHouse", "PublishingHouse")
                         .WithMany("Journals")
-                        .HasForeignKey("PublishingHouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PublishingHouseId");
 
                     b.Navigation("PublishingHouse");
                 });

@@ -6,7 +6,7 @@ namespace ScientificActivities.Parsers;
 
 public class ArticleHelper
 {
-    public static ArticlesRequest TypeOfJournal(string url)
+    public static (ArticlesRequest, string) TypeOfJournal(string url)
     {
         HtmlWeb web = WebClientHelper.CreateWebClient();
 
@@ -24,11 +24,11 @@ public class ArticleHelper
             string typeText = typeNode.InnerText;
             if (typeText.Contains("статья в сборнике трудов конференции"))
             {
-                return СonferenceArticleParser.ParseByСonferenceArticle(url, htmlDoc);
+                return СonferenceArticleParser.ParseByСonferenceArticle(htmlDoc);
             }
             else if (typeText.Contains("статья в журнале - научная статья"))
             {
-                return ScientificArticleParser.ParseByScientificArticle(url, htmlDoc);
+                return ScientificArticleParser.ParseByScientificArticle(htmlDoc);
             }
         }
         

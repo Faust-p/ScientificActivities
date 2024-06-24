@@ -8,10 +8,11 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class ScientificArticleParser
 {
-    public static ArticlesRequest ParseByScientificArticle(string url, HtmlDocument htmlDoc)
+    public static (ArticlesRequest, string) ParseByScientificArticle(HtmlDocument htmlDoc)
     {
         ArticlesRequest article = new ArticlesRequest();
-
+        Random random = new Random();
+        
         // Проверка на капчу
         if (htmlDoc.DocumentNode.SelectSingleNode("//title[text()='Тест Тьюринга']") != null)
         {
@@ -37,10 +38,6 @@ public class ScientificArticleParser
         if (issueNode != null)
         {
             article.Number = issueNode.InnerText.Replace("&nbsp;", "");
-        }
-        else
-        {
-            throw new InvalidOperationException("Элемент номер не найден.");
         }
         
         //Год
@@ -77,16 +74,12 @@ public class ScientificArticleParser
         {
             article.Pages = pagesNode.InnerText;
         }
-        else
-        {
-            throw new InvalidOperationException("Элемент страницы не найден.");
-        }
         
         // Поиск информации о РИНЦ и ядре РИНЦ
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в РИНЦ:')]/font");
         if (rinchNode != null)
         {
-            article.Rsci = rinchNode.InnerText.Contains("Да") ? "1" : "0";
+            article.Rsci = rinchNode.InnerText.Contains("да") ? "1" : "0";
         }
         else
         {
@@ -97,15 +90,61 @@ public class ScientificArticleParser
         var vakSpecialtyNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Специальность') and contains(text(), 'ВАК:')]/following-sibling::td/font/span[@id='rubric_vak']");
         if (vakSpecialtyNode != null)
         {
-            article.Vak = vakSpecialtyNode.InnerText.Contains("Да") ? "1" : "0";
+            article.Vak = vakSpecialtyNode.InnerText.Contains("да") ? "1" : "0";
         }
         else
         {
             throw new InvalidOperationException("Элемент 'Специальность ВАК' не найден.");
         }
 
+        string journalUrl;
+        
+        // Используем XPath, чтобы найти название журнала
+        HtmlNode journalNode = htmlDoc.DocumentNode.SelectSingleNode("//td[@width='504']/a");
+        
+        // Проверяем, найден ли узел с названием журнала
+        if (journalNode != null)
+        {
+            // Получаем ссылку из найденного узла
+            string journalLink = journalNode.GetAttributeValue("href", string.Empty);
+
+            // Формируем полный URL, добавляя базовый URL к относительной ссылке
+            string baseUrl = "https://www.elibrary.ru/"; // Базовый URL
+            string fullUrl = baseUrl + journalLink;
+            
+            // Ждем перед загрузкой новой страницы
+            Thread.Sleep(random.Next(8000, 17000));
+
+            HtmlWeb web = WebClientHelper.CreateWebClient();
+            // Загружаем HTML-код страницы по найденной ссылке
+            HtmlDocument newHtmlDoc = web.Load(fullUrl);
+            
+            // Проверка на капчу
+            if (htmlDoc.DocumentNode.SelectSingleNode("//title[text()='Тест Тьюринга']") != null)
+            {
+                throw new InvalidOperationException("Необходимо пройти капчу для продолжения работы. Посетите https://elibrary.ru/");
+            }
+            
+            // Находим узел <a> с нужным href атрибутом
+            var aTag = newHtmlDoc.DocumentNode.SelectSingleNode("//a[@href and contains(@href, 'title_about.asp')]");
+
+            if (aTag != null)
+            {
+                string relativeLink = aTag.GetAttributeValue("href", string.Empty);
+                journalUrl = new Uri(new Uri(baseUrl), relativeLink).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Вторая ссылка на журнал не найдена");
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Первая ссылка на журнал не найдена");
+        }
+        
         article.JournalId = new Guid("7c8c3625-9afc-464b-87a2-1919a224bd21");
         // Возвращаем заполненный объект статьи
-        return article;
+        return (article, journalUrl);
     }
 }

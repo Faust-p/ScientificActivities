@@ -19,8 +19,8 @@ public class Journal : BaseModel
 
     public string Name { get; set; } = string.Empty;
 
-    public PublishingHouse PublishingHouse { get; set; }
-    public EnumJournalStatus Status { get; }
+    public PublishingHouse? PublishingHouse { get; set; }
+    public EnumJournalStatus Status { get; set; }
     
-    public List<Article> Articles { get; set; } = null!;
+    public List<Article> Articles { get; set; } = new List<Article>();
 }

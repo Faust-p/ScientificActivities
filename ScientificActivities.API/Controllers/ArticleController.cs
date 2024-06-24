@@ -11,11 +11,11 @@ public class ArticleController : BaseController<Article, ArticlesRequest, IArtic
     {
     }
     
-    [HttpPost("CreateParse")]
-    public async Task<IActionResult> CreateParseAsync(string url)
+    [HttpPost("Parse")]
+    public async Task<IActionResult> ParseAsync(string url)
     {
         ArgumentNullException.ThrowIfNull(url);
-        var id = await _service.CreateParseAsync(url, new CancellationToken());
+        var id = await _service.ParseAsync(url, new CancellationToken());
         return Ok(id);
     }
 }

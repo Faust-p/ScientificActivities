@@ -8,7 +8,7 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class СonferenceArticleParser
 {
-    public static ArticlesRequest ParseByСonferenceArticle(string url, HtmlDocument htmlDoc)
+    public static (ArticlesRequest, string) ParseByСonferenceArticle(HtmlDocument htmlDoc)
     {
         ArticlesRequest article = new ArticlesRequest();
         // Проверка на капчу
@@ -64,7 +64,7 @@ public class СonferenceArticleParser
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в РИНЦ:')]/font");
         if (rinchNode != null)
         {
-            article.Rsci = rinchNode.InnerText.Contains("Да") ? "1" : "0";
+            article.Rsci = rinchNode.InnerText.Contains("да") ? "1" : "0";
         }
         else
         {
@@ -75,15 +75,32 @@ public class СonferenceArticleParser
         var vakSpecialtyNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Специальность') and contains(text(), 'ВАК:')]/following-sibling::td/font/span[@id='rubric_vak']");
         if (vakSpecialtyNode != null)
         {
-            article.Vak = vakSpecialtyNode.InnerText.Contains("Да") ? "1" : "0";
+            article.Vak = vakSpecialtyNode.InnerText.Contains("да") ? "1" : "0";
         }
         else
         {
             throw new InvalidOperationException("Элемент 'Специальность ВАК' не найден.");
         }
 
+        // Используем XPath, чтобы найти название конференции
+        HtmlNode journalNode = htmlDoc.DocumentNode.SelectSingleNode("//td[@width='504']/a");
+        string journalUrl;
+        
+        // Проверяем, найден ли узел с названием конференции
+        if (journalNode != null)
+        {
+            // Получаем ссылку из найденного узла
+            string journalLink = journalNode.GetAttributeValue("href", string.Empty);
+
+            // Формируем полный URL, добавляя базовый URL к относительной ссылке
+           journalUrl = "https://www.elibrary.ru/" + journalLink;
+        }
+        else
+            throw new InvalidOperationException("Ссылка на сборник трудов не найдена.");
+        
+        
         article.JournalId = new Guid("7c8c3625-9afc-464b-87a2-1919a224bd21");
         // Возвращаем заполненный объект статьи
-        return article;
+        return (article, journalUrl);
     }
 }

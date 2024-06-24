@@ -12,13 +12,13 @@ public class ArticleParseProvider : IArticleParseProvider
         
         var journalRequest = new ArticlesRequest
         {
-            Name = parserResult.Name,
-            Number = parserResult.Number,
-            Year = parserResult.Year,
-            Pages = parserResult.Pages,
-            Rsci = parserResult.Rsci,
-            Vak = parserResult.Vak,
-            JournalId = parserResult.JournalId
+            Name = parserResult.Item1.Name,
+            Number = parserResult.Item1.Number,
+            Year = parserResult.Item1.Year,
+            Pages = parserResult.Item1.Pages,
+            Rsci = parserResult.Item1.Rsci,
+            Vak = parserResult.Item1.Vak,
+            JournalId = parserResult.Item1.JournalId
         };
         return Task.FromResult(journalRequest);
     }

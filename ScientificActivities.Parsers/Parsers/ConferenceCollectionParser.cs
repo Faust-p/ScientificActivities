@@ -8,14 +8,12 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class ConferenceCollectionParser
 {
-    public static JournalRequest ParseByConferenceCollection(string url, HtmlDocument htmlDoc)
+    public static (JournalRequest, string?, string? publisherName) ParseByConferenceCollection(HtmlDocument htmlDoc)
     {
         var journalRequest = new JournalRequest();
         // Создаем генератор случайных чисел
         Random random = new Random();
         
-        // Генерируем случайное число в диапазоне от 8 до 20 (включительно)
-        int randomSeconds = random.Next(8000, 17000);
         
         if (htmlDoc.DocumentNode.SelectSingleNode("//title[text()='Тест Тьюринга']") != null)
         {
@@ -45,10 +43,48 @@ public class ConferenceCollectionParser
         {
             journalRequest.Status = "1";
         }
+        
+        // Поиск издательства с учетом различных структур HTML
+        var publisherNode =
+            htmlDoc.DocumentNode.SelectSingleNode(
+                "//td[contains(text(), 'Издательство:')]/font | //td[contains(text(), 'Издательство:')]/a");
+        string? publisherName = null;
+        string? publisherUrl = null;
+        if (publisherNode != null)
+        {
+            publisherName = publisherNode.InnerText.Trim();
+            
+            // Извлечение ссылки из атрибута title элемента <span>
+            var spanNode = publisherNode.ParentNode;
+            if (spanNode != null && spanNode.Attributes["title"] != null)
+            {
+                string title = spanNode.Attributes["title"].Value;
+                // Регулярное выражение для поиска URL в атрибуте title
+                var matches = System.Text.RegularExpressions.Regex.Matches(title, @"href=""([^""]+)""");
+                foreach (System.Text.RegularExpressions.Match match in matches)
+                {
+                    string href = match.Groups[1].Value;
+                    if (!string.IsNullOrEmpty(href))
+                    {
+                        publisherUrl = "https://elibrary.ru/" + href;
+                    }
+                }
+            }
 
+            // Если издательство найдено в элементе <a>, выводим ссылку на издательство
+            var publisherLinkNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Издательство:')]/a");
+            if (publisherLinkNode != null)
+            {
+                string href = publisherLinkNode.GetAttributeValue("href", string.Empty);
+                if (!string.IsNullOrEmpty(href))
+                {
+                    publisherUrl = "https://elibrary.ru/" + href;
+                }
+            }
+        }
         // Генерация случайного PublishingHouseId
         journalRequest.PublishingHouseId = new Guid("41f3a777-c2a8-45c3-9e47-efbfa70401fa");
 
-        return journalRequest;
+        return (journalRequest, publisherUrl, publisherName);
     }
 }

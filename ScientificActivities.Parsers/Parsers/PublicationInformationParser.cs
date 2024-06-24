@@ -8,7 +8,7 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class PublicationInformationParser
 {
-    public static JournalRequest ParseByPublicationInformation(string url, HtmlDocument htmlDoc)
+    public static (JournalRequest, string? publisherUrl, string? publisherName) ParseByPublicationInformation(HtmlDocument htmlDoc)
     {
         var journalRequest = new JournalRequest();
         
@@ -39,10 +39,39 @@ public class PublicationInformationParser
         {
             journalRequest.Status = "1";
         }
+        
+        var tableNodes = htmlDoc.DocumentNode.SelectNodes("//table");
+        string? publisherName = null;
+        string? publisherUrl = null;
 
+        foreach (var tableNode in tableNodes)
+        {
+            var hasPublisherLabel = tableNode.SelectSingleNode(".//font[contains(., 'ИЗДАТЕЛЬСТВО:')]");
+            if (hasPublisherLabel != null)
+            {
+                var publisherNode = tableNode.SelectSingleNode(".//a[contains(@href, '/org_profile.asp')]");
+                if (publisherNode != null)
+                {
+                    publisherName = publisherNode.InnerText.Trim();
+                    Console.WriteLine("Имя издательства1" + publisherName);
+                    publisherUrl = "https://elibrary.ru" + publisherNode.GetAttributeValue("href", string.Empty).Trim();
+                }
+                else
+                {
+                    // Ищем следующий элемент font после элемента с текстом "ИЗДАТЕЛЬСТВО:"
+                    var publisherFontNode = hasPublisherLabel.SelectSingleNode("following::font[@color='#00008f']");
+                    if (publisherFontNode != null)
+                    {
+                        publisherName = publisherFontNode.InnerText.Trim();
+                        Console.WriteLine("Имя издательства2" + publisherName);
+                    }
+                }
+                break;
+            }
+        }
         // Генерация случайного PublishingHouseId
         journalRequest.PublishingHouseId = new Guid("41f3a777-c2a8-45c3-9e47-efbfa70401fa");
 
-        return journalRequest;
+        return (journalRequest, publisherUrl, publisherName);
     }
 }

@@ -9,7 +9,7 @@ namespace ScientificActivities.Parsers.Parsers;
 /// </summary>
 public class JournalParser
 {
-    public static JournalRequest ParseByJournal(string url, HtmlDocument htmlDoc)
+    public static (JournalRequest journalRequest, string? publisherUrl, string? publisherName) ParseByJournal(HtmlDocument htmlDoc)
         {
             var journalRequest = new JournalRequest();
             
@@ -73,10 +73,38 @@ public class JournalParser
             {
                 journalRequest.Status = "2"; // Tezis
             }
+            
+            //Издательство
+            var tableNodes = htmlDoc.DocumentNode.SelectNodes("//table");
+            string? publisherName = null;
+            string? publisherUrl = null;
 
+            foreach (var tableNode in tableNodes)
+            {
+                var hasPublisherLabel = tableNode.SelectSingleNode(".//font[contains(., 'Издательство')]");
+                if (hasPublisherLabel != null)
+                {
+                    var publisherNode = tableNode.SelectSingleNode(".//a[contains(@href, 'publisher_about.asp')]");
+                    if (publisherNode != null)
+                    {
+                        publisherName = publisherNode.InnerText.Trim();
+                        publisherUrl = "https://elibrary.ru/" + publisherNode.GetAttributeValue("href", string.Empty).Trim();
+                    }
+                    else
+                    {
+                        // Ищем следующий элемент font после элемента с текстом "Издательство"
+                        var publisherFontNode = hasPublisherLabel.SelectSingleNode("following::font[@color='#00008f']");
+                        if (publisherFontNode != null)
+                        {
+                            publisherName = publisherFontNode.InnerText.Trim();
+                        }
+                    }
+                    break;
+                }
+            }
             // PublishingHouseId нужно будет установить отдельно, так как эта информация не парсится
             journalRequest.PublishingHouseId = new Guid("41f3a777-c2a8-45c3-9e47-efbfa70401fa");
 
-            return journalRequest;
+            return (journalRequest, publisherUrl, publisherName);
         }
 }

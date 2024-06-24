@@ -20,6 +20,9 @@ public class PublishingHouseService : IPublishingHouseService
 
     public async Task<Guid> CreateAsync(PublishingHouseRequest entityRequest, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrWhiteSpace(entityRequest.Name))
+                throw new ExistIsEntityException("Name не может быть пустым");
+            
             if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
                 throw new ExistIsEntityException("Такое издательство уже существует");
 
@@ -30,12 +33,15 @@ public class PublishingHouseService : IPublishingHouseService
             return publishingHouseDb.Id;
         }
 
-        public async Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken)
+        public async Task<Guid> ParseAsync(string url, CancellationToken cancellationToken)
         {
             var entityRequest = await _publishingHouseParseProvider.ParseAsync(url, cancellationToken);
             
-            if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
-                throw new ExistIsEntityException("Такое издательство уже существует");
+            
+            var existingpublishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken);
+            if (existingpublishingHouse != null)
+                return existingpublishingHouse.Id;
+                //throw new ExistIsEntityException("Такое издательство уже существует");
 
             var publishingHouseDb = new PublishingHouse(entityRequest.Name,
                 entityRequest.Country,

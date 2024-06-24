@@ -13,9 +13,9 @@ public class JournalParseProvider : IJournalParseProvider
         
          var journalRequest = new JournalRequest
         {
-            Name = parserResult.Name,
-            PublishingHouseId = parserResult.PublishingHouseId,
-            Status = parserResult.Status
+            Name = parserResult.Item1.Name,
+            PublishingHouseId = parserResult.Item1.PublishingHouseId,
+            Status = parserResult.Item1.Status
         };
         return Task.FromResult(journalRequest);
     }

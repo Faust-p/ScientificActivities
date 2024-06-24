@@ -23,8 +23,13 @@ public class JournalService : IJournalService
 
      public async Task<Guid> CreateAsync(JournalRequest entityRequest, CancellationToken cancellationToken)
         {
-            if (await _journalProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
-                throw new ExistIsEntityException("Такой журнал уже существует");
+            if (string.IsNullOrWhiteSpace(entityRequest.Name))
+                throw new ExistIsEntityException("Name не может быть пустым");
+            
+            var existingJournal = await _journalProvider.FindAsync(entityRequest.Name, cancellationToken);
+            if (existingJournal != null)
+                return existingJournal.Id;
+                //throw new ExistIsEntityException("Такой журнал уже существует");
 
             var publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
             if (publishingHouse == null)
@@ -38,7 +43,7 @@ public class JournalService : IJournalService
             return journalDb.Id;
         }
 
-        public async Task<Guid> CreateParseAsync(string url, CancellationToken cancellationToken)
+        public async Task<Guid> ParseAsync(string url, CancellationToken cancellationToken)
         {
             var entityRequest = await _journalParseProvider.ParseAsync(url, cancellationToken);
 

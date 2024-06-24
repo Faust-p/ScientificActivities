@@ -2,7 +2,7 @@
 
 namespace ScientificActivities.Service.Services.Interface.Providers.Parsers;
 
-public interface IArticleParseProvider : IParseProvider<ArticlesRequest>
+public interface IArticleParseProvider : IBaseParseProvider<ArticlesRequest>
 {
     
 }
