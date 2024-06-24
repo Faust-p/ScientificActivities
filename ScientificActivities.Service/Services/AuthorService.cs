@@ -30,9 +30,6 @@ public class AuthorService : IAuthorService
         var department = await _departmentProvider.FindAsync(entityRequest.DepartmentId, cancellationToken);
         if (department == null)
             throw new MissingDivisionException("Не указана кафедра");
-        var articles = await _articlesProvider.FindAsync(entityRequest.ArticlesId, cancellationToken);
-        if (articles == null)
-            throw new MissingDivisionException("Не указана статья");
         var authorDb = new Author(entityRequest.FirstName,
             entityRequest.LastName,
             entityRequest.SureName,
@@ -40,8 +37,7 @@ public class AuthorService : IAuthorService
             entityRequest.Email,
             department,
             (EnumEmployeePosition)Enum.Parse(typeof(EnumEmployeePosition), entityRequest.Position, true),
-            (EnumAcademicDegree)Enum.Parse(typeof(EnumAcademicDegree), entityRequest.Degree, true),
-            articles);
+            (EnumAcademicDegree)Enum.Parse(typeof(EnumAcademicDegree), entityRequest.Degree, true));
         await _authorProvider.AddAsync(authorDb, cancellationToken);
         return authorDb.Id;
     }

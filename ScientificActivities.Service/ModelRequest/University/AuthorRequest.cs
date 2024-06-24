@@ -20,7 +20,5 @@ public class AuthorRequest : BaseModelRequest
     
     public string Degree { get; set; }
     
-    public Guid ArticlesId { get; set; }
-    
     public List<ArticleAuthorsRequest> ArticlesList { get; set; }
 }
