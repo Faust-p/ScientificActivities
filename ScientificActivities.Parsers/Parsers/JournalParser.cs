@@ -39,8 +39,6 @@ public class JournalParser
             }
             
             var tableRows = htmlDoc.DocumentNode.SelectNodes("//tr");
-            bool isRINC = false;
-            bool isVAK = false;
 
             foreach (var row in tableRows)
             {
@@ -49,30 +47,18 @@ public class JournalParser
                 {
                     var cellText = cells[0].InnerText.Trim();
                     var cellValue = cells[1].InnerText.Trim().ToLower();
-                    if (cellText == "РИНЦ" && cellValue == "да")
+                    if (cellText == "РИНЦ")
                     {
-                        isRINC = true;
+                        journalRequest.Rsci = (cellValue == "да") ? "1" : "0";
                     }
-                    else if (cellText == "Перечень ВАК" && cellValue == "да")
+                    else if (cellText == "Перечень ВАК")
                     {
-                        isVAK = true;
+                        journalRequest.Vak = (cellValue == "да") ? "1" : "0";
                     }
                 }
             }
 
-            // Определение статуса
-            if (isVAK)
-            {
-                journalRequest.Status = "1"; // VAK
-            }
-            else if (isRINC)
-            {
-                journalRequest.Status = "0"; // RSCI
-            }
-            else
-            {
-                journalRequest.Status = "2"; // Tezis
-            }
+            journalRequest.CoreRsci = "0";
             
             //Издательство
             var tableNodes = htmlDoc.DocumentNode.SelectNodes("//table");

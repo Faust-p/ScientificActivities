@@ -15,6 +15,12 @@ public class ArticlesRequest : BaseModelRequest
     
     public string Vak { get; set; }
     
+    public string CoreRsci { get; set; }
+    
+    public string? Volume { get; set; }
+    
+    public string? Language { get; set; }
+    
     public Guid JournalId { get; set; }
     
     public string JounalName { get; set; }

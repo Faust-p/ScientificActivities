@@ -23,8 +23,11 @@ public class PublishingHouseService : IPublishingHouseService
             if (string.IsNullOrWhiteSpace(entityRequest.Name))
                 throw new ExistIsEntityException("Name не может быть пустым");
             
-            if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
-                throw new ExistIsEntityException("Такое издательство уже существует");
+            var existingpublishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken);
+            if (existingpublishingHouse != null)
+                return existingpublishingHouse.Id;
+                //throw new ExistIsEntityException("Такое издательство уже существует");
+            
 
             var publishingHouseDb = new PublishingHouse(entityRequest.Name,
                 entityRequest.Country,

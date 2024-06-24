@@ -28,17 +28,30 @@ public class PublicationInformationParser
         
         // Поиск информации о РИНЦ
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'РИНЦ:')]/font");
-        if (rinchNode != null && rinchNode.InnerText.Trim().Equals("Да", StringComparison.OrdinalIgnoreCase))
+        if (rinchNode != null)
         {
-            journalRequest.Status = "0";
+            var rinchValue = rinchNode.InnerText.Trim().ToLower();
+            journalRequest.Rsci = (rinchValue == "да") ? "1" : "0";
         }
 
         // Поиск информации о ВАК
         var vakSpecialtyNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Перечень ВАК РФ:')]/font");
-        if (vakSpecialtyNode != null && vakSpecialtyNode.InnerText.Trim().Equals("Да", StringComparison.OrdinalIgnoreCase))
+        if (vakSpecialtyNode != null)
         {
-            journalRequest.Status = "1";
+            var vakValue = vakSpecialtyNode.InnerText.Trim().ToLower();
+            journalRequest.Vak = (vakValue == "да") ? "1" : "0";
         }
+
+        // Поиск информации о ядре РИНЦ
+        var rinchCoreNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Ядро РИНЦ:')]/font");
+        if (rinchCoreNode != null)
+        {
+            var rinchCoreValue = rinchCoreNode.InnerText.Trim().ToLower();
+            journalRequest.CoreRsci = (rinchCoreValue == "да") ? "1" : "0";
+        }
+
+        
+        
         
         var tableNodes = htmlDoc.DocumentNode.SelectNodes("//table");
         string? publisherName = null;

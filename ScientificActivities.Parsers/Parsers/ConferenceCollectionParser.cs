@@ -27,21 +27,29 @@ public class ConferenceCollectionParser
             journalRequest.Name = titleNode.InnerText.Trim();
         }
         
-        
-
         // Поиск информации о РИНЦ
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в РИНЦ:')]/font");
-        if (rinchNode != null && rinchNode.InnerText.Trim().Equals("Да", StringComparison.OrdinalIgnoreCase))
+        if (rinchNode != null)
         {
-            journalRequest.Status = "0";
+            var rinchValue = rinchNode.InnerText.Trim().ToLower();
+            journalRequest.Rsci = (rinchValue == "да") ? "1" : "0";
         }
 
         // Поиск информации о специальности ВАК
         var vakSpecialtyNode = htmlDoc.DocumentNode.SelectSingleNode(
             "//td[contains(text(), 'Специальность') and contains(text(), 'ВАК:')]/following-sibling::td/font/span[@id='rubric_vak']");
-        if (vakSpecialtyNode != null && vakSpecialtyNode.InnerText.Trim().Equals("Да", StringComparison.OrdinalIgnoreCase))
+        if (vakSpecialtyNode != null)
         {
-            journalRequest.Status = "1";
+            var vakValue = vakSpecialtyNode.InnerText.Trim().ToLower();
+            journalRequest.Vak = (vakValue == "да") ? "1" : "0";
+        }
+
+        // Поиск информации о ядре РИНЦ
+        var rinchCoreNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в ядро РИНЦ:')]/font/span");
+        if (rinchCoreNode != null)
+        {
+            var rinchCoreValue = rinchCoreNode.InnerText.Trim().ToLower();
+            journalRequest.CoreRsci = (rinchCoreValue == "да") ? "1" : "0";
         }
         
         // Поиск издательства с учетом различных структур HTML

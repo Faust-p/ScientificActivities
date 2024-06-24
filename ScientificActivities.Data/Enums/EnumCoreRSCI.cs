@@ -1,6 +1,6 @@
 ﻿namespace ScientificActivities.Data.Enums;
 
-public enum EnumVAK
+public enum EnumCoreRSCI
 {
     /// <summary>
     /// Нет

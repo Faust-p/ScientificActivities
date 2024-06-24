@@ -60,6 +60,17 @@ public class СonferenceArticleParser
             throw new InvalidOperationException("Элемент страницы не найден.");
         }
         
+        //Язык
+        var languageNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(., 'Язык:')]/font[2]");
+        if (languageNode != null)
+        {
+            article.Language = languageNode.InnerText;
+        }
+        else
+        {
+            throw new InvalidOperationException("Элемент язык не найден.");
+        }
+        
         // Поиск информации о РИНЦ и ядре РИНЦ
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в РИНЦ:')]/font");
         if (rinchNode != null)
@@ -80,6 +91,17 @@ public class СonferenceArticleParser
         else
         {
             throw new InvalidOperationException("Элемент 'Специальность ВАК' не найден.");
+        }
+        
+        //Ядро РИНЦ
+        var rinchCoreNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в ядро РИНЦ:')]/font/span");
+        if (rinchCoreNode != null)
+        {
+            article.CoreRsci = rinchCoreNode.InnerText.Contains("да") ? "1" : "0";
+        }
+        else
+        {
+            throw new InvalidOperationException("Элемент 'Входит в ядро РИНЦ' не найден.");
         }
 
         // Используем XPath, чтобы найти название конференции

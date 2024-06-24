@@ -1,5 +1,5 @@
-﻿using ScientificActivities.Data.Models.Publication;
-using ScientificActivities.Service.Converters;
+﻿using ScientificActivities.Data.Enums;
+using ScientificActivities.Data.Models.Publication;
 using ScientificActivities.Service.CustomException;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers;
@@ -52,6 +52,9 @@ public class ArticlesService : IArticlesService
             entityRequest.Pages,
             (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
             (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            (EnumCoreRSCI)Enum.Parse(typeof(EnumCoreRSCI), entityRequest.CoreRsci, true),
+            entityRequest.Volume,
+            entityRequest.Language,
             journal);
         await _articlesProvider.AddAsync(articlesDb, cancellationToken);
         return articlesDb.Id;
@@ -72,6 +75,9 @@ public class ArticlesService : IArticlesService
             entityRequest.Pages,
             (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
             (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+            (EnumCoreRSCI)Enum.Parse(typeof(EnumCoreRSCI), entityRequest.CoreRsci, true),
+            entityRequest.Volume,
+            entityRequest.Language,
             journal);
         await _articlesProvider.AddAsync(articlesDb, cancellationToken);
         return articlesDb.Id;
@@ -99,24 +105,15 @@ public class ArticlesService : IArticlesService
         var journal = await _journalProvider.FindAsync(entityRequest.JournalId, cancellationToken);
         if (journal == null)
             throw new MissingDirectionException("Такого журнала не существует");
-
-        /*var newArticlesDb = ArticlesConverter.ConverterArticlesRequest(entityRequest, journal);
-        articlesDb.Name = newArticlesDb.Name;
-        articlesDb.Number = newArticlesDb.Number;
-        articlesDb.Year = newArticlesDb.Year;
-        articlesDb.Pages = newArticlesDb.Pages;
-        articlesDb.Rsci = newArticlesDb.Rsci;
-        articlesDb.Vak = newArticlesDb.Vak;
-        articlesDb.UpdateChange = DateTime.Now;*/
-
-        var db = new Article(entityRequest.Name,
-            entityRequest.Number,
-            entityRequest.Year,
-            entityRequest.Pages,
-            (EnumRSCI) Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
-            (EnumVAK) Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
-            journal);
-
+        
+        articlesDb.Name = entityRequest.Name;
+        articlesDb.Number = entityRequest.Number;
+        articlesDb.Year = entityRequest.Year;
+        articlesDb.Pages = entityRequest.Pages;
+        articlesDb.Rsci = (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true);
+        articlesDb.Vak = (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true);
+        articlesDb.UpdateChange = DateTime.Now;
+        
         await _articlesProvider.UpdateAsync(articlesDb, cancellationToken);
         return articlesDb;
     }
