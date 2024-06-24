@@ -26,17 +26,17 @@ public class Article : BaseModel
     
     public string Name { get; set; } 
 
-    public string Number { get; set; }
+    public string? Number { get; set; }
 
-    public DateTime Year { get; set; }
+    public DateTime? Year { get; set; }
 
-    public string Pages { get; set; }
+    public string? Pages { get; set; }
 
     public EnumRSCI? Rsci { get; set; }
 
     public EnumVAK? Vak { get; set; }
     
-    public Journal Journal { get; set; }
+    public Journal? Journal { get; set; }
     
     public List<ArticlesAuthors>? Authors { get; set; }
 }

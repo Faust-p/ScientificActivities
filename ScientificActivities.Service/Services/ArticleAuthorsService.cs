@@ -64,4 +64,9 @@ public class ArticleAuthorsService : IArticleAuthorsService
         {
             return await _articleAuthorsProvider.GetAllAsync(cancellationToken);
         }
+        
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _articleAuthorsProvider.DeleteAsync(id, cancellationToken);
+        }
 }

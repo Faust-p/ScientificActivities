@@ -27,10 +27,19 @@ public class UserProvider : IUserProvider
         return user;
     }
 
-    public async Task<User?> FindAsync(string name, CancellationToken cancellationToken)
+    public async Task<User?> FindAsync(string name, string surname, CancellationToken cancellationToken)
     {
         var user = await _applicationContext.Users
-            .FirstOrDefaultAsync(u => u.FirstName == name, cancellationToken: cancellationToken).ConfigureAwait(false);
+            .FirstOrDefaultAsync(u => u.FirstName == name &&
+                u.SureName == surname, 
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        return user;
+    }
+
+    public async Task<User?> FindAsync(string email, CancellationToken cancellationToken)
+    {
+        var user = await _applicationContext.Users
+            .FirstOrDefaultAsync(u => u.Email == email, cancellationToken: cancellationToken).ConfigureAwait(false);
         return user;
     }
 

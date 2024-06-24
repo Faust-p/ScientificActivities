@@ -18,3 +18,5 @@ D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInject
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInjection\obj\Debug\net8.0\refint\ScientificActivities.DependencyInjection.dll
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInjection\obj\Debug\net8.0\ScientificActivities.DependencyInjection.pdb
 D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInjection\obj\Debug\net8.0\ref\ScientificActivities.DependencyInjection.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInjection\bin\Debug\net8.0\ScientificActivities.Parsers.dll
+D:\PGU\DiplomWork\git\ScientificActivities\ScientificActivities.DependencyInjection\bin\Debug\net8.0\ScientificActivities.Parsers.pdb

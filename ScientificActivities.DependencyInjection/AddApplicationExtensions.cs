@@ -16,6 +16,8 @@ public static partial class ServiceCollectionExtensions
         service.AddScoped<IJournalService, JournalService>();
         service.AddScoped<IPublishingHouseService, PublishingHouseService>();
         service.AddScoped<IUserService, UserService>();
+        service.AddScoped<IPasswordHashService, PasswordHashService>();
+        service.AddScoped<IParseService, ParseService>();
         
         return service;
     }

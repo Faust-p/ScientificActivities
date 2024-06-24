@@ -58,4 +58,9 @@ public class FacultyService : IFacultyService
         {
             return await _facultyProvider.GetAllAsync(cancellationToken);
         }
+        
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _facultyProvider.DeleteAsync(id, cancellationToken);
+        }
 }

@@ -50,6 +50,8 @@ namespace ScientificActivities.Infrastructure.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SureName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     DateCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -106,19 +108,18 @@ namespace ScientificActivities.Infrastructure.Migrations
                 name: "MailToken",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Key = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateExpire = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<long>(type: "bigint", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DateCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateChange = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MailToken", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MailToken_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_MailToken_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -235,9 +236,9 @@ namespace ScientificActivities.Infrastructure.Migrations
                 column: "PublishingHouseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MailToken_UserId1",
+                name: "IX_MailToken_UserId",
                 table: "MailToken",
-                column: "UserId1");
+                column: "UserId");
         }
 
         /// <inheritdoc />

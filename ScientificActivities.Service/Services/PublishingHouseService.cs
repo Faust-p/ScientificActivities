@@ -2,6 +2,7 @@
 using ScientificActivities.Service.CustomException;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers;
+using ScientificActivities.Service.Services.Interface.Providers.Parsers;
 using ScientificActivities.Service.Services.Interface.Services;
 
 namespace ScientificActivities.Service.Services;
@@ -9,11 +10,38 @@ namespace ScientificActivities.Service.Services;
 public class PublishingHouseService : IPublishingHouseService
 {
     private readonly IPublishingHouseProvider _publishingHouseProvider;
+    private readonly IPublishingHouseParseProvider _publishingHouseParseProvider;
 
-     public async Task<Guid> CreateAsync(PublishingHouseRequest entityRequest, CancellationToken cancellationToken)
+    public PublishingHouseService(IPublishingHouseProvider publishingHouseProvider, IPublishingHouseParseProvider publishingHouseParseProvider)
+    {
+        _publishingHouseProvider = publishingHouseProvider;
+        _publishingHouseParseProvider = publishingHouseParseProvider;
+    }
+
+    public async Task<Guid> CreateAsync(PublishingHouseRequest entityRequest, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrWhiteSpace(entityRequest.Name))
+                throw new ExistIsEntityException("Name не может быть пустым");
+            
             if (await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken) != null)
                 throw new ExistIsEntityException("Такое издательство уже существует");
+
+            var publishingHouseDb = new PublishingHouse(entityRequest.Name,
+                entityRequest.Country,
+                entityRequest.City);
+            await _publishingHouseProvider.AddAsync(publishingHouseDb, cancellationToken);
+            return publishingHouseDb.Id;
+        }
+
+        public async Task<Guid> ParseAsync(string url, CancellationToken cancellationToken)
+        {
+            var entityRequest = await _publishingHouseParseProvider.ParseAsync(url, cancellationToken);
+            
+            
+            var existingpublishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.Name, cancellationToken);
+            if (existingpublishingHouse != null)
+                return existingpublishingHouse.Id;
+                //throw new ExistIsEntityException("Такое издательство уже существует");
 
             var publishingHouseDb = new PublishingHouse(entityRequest.Name,
                 entityRequest.Country,
@@ -54,5 +82,10 @@ public class PublishingHouseService : IPublishingHouseService
         public async Task<List<PublishingHouse>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _publishingHouseProvider.GetAllAsync(cancellationToken);
+        }
+        
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        {
+            await _publishingHouseProvider.DeleteAsync(id, cancellationToken);
         }
 }

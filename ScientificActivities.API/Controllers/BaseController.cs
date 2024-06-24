@@ -46,4 +46,12 @@ public abstract class BaseController<TypeEntityBd, TypeRequest, TypeService> : A
         ArgumentNullException.ThrowIfNull(request);
         return await _service.UpdateAsync(request, new CancellationToken());
     }
+    
+    [HttpDelete("Delete")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        ArgumentNullException.ThrowIfNull(id);
+        await _service.DeleteAsync(id, new CancellationToken());
+        return Ok();
+    }
 }

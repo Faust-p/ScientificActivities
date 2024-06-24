@@ -5,5 +5,5 @@ namespace ScientificActivities.Service.Services.Interface.Services;
 
 public interface IUserService : IBaseService<User, UserRequest>
 {
-    
+    Task<Token> LoginAsync(UserLoginRequest entityRequest, CancellationToken cancellationToken);
 }

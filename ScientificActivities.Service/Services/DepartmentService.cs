@@ -69,4 +69,9 @@ public class DepartmentService : IDepartmentService
     {
         return await _departmentProvider.GetAllAsync(cancellationToken);
     }
+    
+    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        await _departmentProvider.DeleteAsync(id, cancellationToken);
+    }
 }
