@@ -75,6 +75,41 @@ public class ScientificArticleParser
             article.Pages = pagesNode.InnerText;
         }
         
+        //Том
+        string volumeText = null;
+
+        foreach (var node in fontNodes)
+        {
+            // Проверяем, содержит ли предыдущий элемент текст "Том:"
+            if (node.PreviousSibling != null && node.PreviousSibling.InnerText.Contains("Том:"))
+            {
+                volumeText = node.InnerText.Trim();
+                break;
+            }
+            // Добавляем условие для учета возможного использования тега <span> между "Том:" и значением
+            else if (node.PreviousSibling != null && node.PreviousSibling.PreviousSibling != null &&
+                     node.PreviousSibling.PreviousSibling.InnerText.Contains("Том:"))
+            {
+                volumeText = node.InnerText.Trim();
+                break;
+            }
+        }
+        if (volumeText != null)
+        {
+            article.Volume = volumeText;
+        }
+        
+        //Язык
+        var languageNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(., 'Язык:')]/font[2]");
+        if (languageNode != null)
+        {
+            article.Language = languageNode.InnerText;
+        }
+        else
+        {
+            throw new InvalidOperationException("Элемент язык не найден.");
+        }
+        
         // Поиск информации о РИНЦ и ядре РИНЦ
         var rinchNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в РИНЦ:')]/font");
         if (rinchNode != null)
@@ -95,6 +130,17 @@ public class ScientificArticleParser
         else
         {
             throw new InvalidOperationException("Элемент 'Специальность ВАК' не найден.");
+        }
+        
+        //Ядро РИНЦ
+        var rinchCoreNode = htmlDoc.DocumentNode.SelectSingleNode("//td[contains(text(), 'Входит в ядро РИНЦ:')]/font/span");
+        if (rinchCoreNode != null)
+        {
+            article.CoreRsci = rinchCoreNode.InnerText.Contains("да") ? "1" : "0";
+        }
+        else
+        {
+            throw new InvalidOperationException("Элемент 'Входит в ядро РИНЦ' не найден.");
         }
 
         string journalUrl;

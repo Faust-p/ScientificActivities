@@ -7,4 +7,6 @@ public class DepartmentRequest : BaseModelRequest
     public Guid FacultyId { get; set; }
     
     public List<AuthorRequest> Authors { get; set; }
+    
+    public string FacultyName { get; set; }
 }

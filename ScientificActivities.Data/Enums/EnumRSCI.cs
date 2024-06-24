@@ -1,4 +1,4 @@
-﻿namespace ScientificActivities.StorageEnums;
+﻿namespace ScientificActivities.Data.Enums;
 
 public enum EnumRSCI
 {

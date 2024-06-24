@@ -1,4 +1,5 @@
-﻿using ScientificActivities.Data.Models.Publication;
+﻿using ScientificActivities.Data.Enums;
+using ScientificActivities.Data.Models.Publication;
 using ScientificActivities.Service.CustomException;
 using ScientificActivities.Service.ModelRequest.Publication;
 using ScientificActivities.Service.Services.Interface.Providers;
@@ -31,14 +32,27 @@ public class JournalService : IJournalService
                 return existingJournal.Id;
                 //throw new ExistIsEntityException("Такой журнал уже существует");
 
-            var publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
+                
+                PublishingHouse publishingHouse = null;
+                if (string.IsNullOrWhiteSpace(entityRequest.PublishingHouseName))
+                {
+                    publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
+                }
+                else
+                {
+                    publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseName, cancellationToken);
+                }
+                
+                
+            /*var publishingHouse = await _publishingHouseProvider.FindAsync(entityRequest.PublishingHouseId, cancellationToken);
             if (publishingHouse == null)
-                throw new MissingDivisionException("Такого издательства не существует");
+                throw new MissingDivisionException("Такого издательства не существует");*/
 
             var journalDb = new Journal(entityRequest.Name, 
                 publishingHouse,
-                (EnumJournalStatus) Enum.Parse(typeof(EnumJournalStatus), 
-                entityRequest.Status, true));
+                (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+                (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+                (EnumCoreRSCI)Enum.Parse(typeof(EnumCoreRSCI), entityRequest.CoreRsci, true));
             await _journalProvider.AddAsync(journalDb, cancellationToken);
             return journalDb.Id;
         }
@@ -56,8 +70,9 @@ public class JournalService : IJournalService
 
             var journalDb = new Journal(entityRequest.Name, 
                 publishingHouse,
-                (EnumJournalStatus) Enum.Parse(typeof(EnumJournalStatus), 
-                    entityRequest.Status, true));
+                (EnumRSCI)Enum.Parse(typeof(EnumRSCI), entityRequest.Rsci, true),
+                (EnumVAK)Enum.Parse(typeof(EnumVAK), entityRequest.Vak, true),
+                (EnumCoreRSCI)Enum.Parse(typeof(EnumCoreRSCI), entityRequest.CoreRsci, true));
             await _journalProvider.AddAsync(journalDb, cancellationToken);
             return journalDb.Id;
         }

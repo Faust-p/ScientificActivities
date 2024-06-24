@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScientificActivities.Infrastructure;
 
@@ -11,9 +12,11 @@ using ScientificActivities.Infrastructure;
 namespace ScientificActivities.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240624160144_Fix")]
+    partial class Fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,17 +31,11 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("CoreRsci")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("JournalId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -58,9 +55,6 @@ namespace ScientificActivities.Infrastructure.Migrations
 
                     b.Property<int?>("Vak")
                         .HasColumnType("int");
-
-                    b.Property<string>("Volume")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Year")
                         .HasColumnType("datetime2");
@@ -105,9 +99,6 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("CoreRsci")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
@@ -118,14 +109,11 @@ namespace ScientificActivities.Infrastructure.Migrations
                     b.Property<Guid?>("PublishingHouseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Rsci")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateChange")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("Vak")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -196,6 +184,7 @@ namespace ScientificActivities.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SureName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateChange")

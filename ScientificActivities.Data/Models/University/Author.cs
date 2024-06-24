@@ -27,7 +27,7 @@ public class Author : BaseModel
 
     public string LastName { get; set; } = string.Empty;
 
-    public string SureName { get; set; } = string.Empty;
+    public string? SureName { get; set; } = string.Empty;
 
     public string Contacts { get; set; } = string.Empty;
 

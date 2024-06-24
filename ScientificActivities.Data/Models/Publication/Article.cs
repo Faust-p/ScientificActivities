@@ -1,4 +1,5 @@
-﻿using ScientificActivities.Data.Models.University;
+﻿using ScientificActivities.Data.Enums;
+using ScientificActivities.Data.Models.University;
 using ScientificActivities.StorageEnums;
 
 namespace ScientificActivities.Data.Models.Publication;
@@ -8,7 +9,7 @@ namespace ScientificActivities.Data.Models.Publication;
 /// </summary>
 public class Article : BaseModel
 {
-    public Article(string name, string number, DateTime year, string pages, EnumRSCI rsci, EnumVAK vak, Journal journal)
+    public Article(string name, string number, DateTime year, string pages, EnumRSCI rsci, EnumVAK vak, EnumCoreRSCI coreRsci, string volume, string language, Journal journal)
     {
         Name = name;
         Number = number;
@@ -16,6 +17,9 @@ public class Article : BaseModel
         Pages = pages;
         Rsci = rsci;
         Vak = vak;
+        CoreRsci = coreRsci;
+        Volume = volume;
+        Language = language;
         Journal = journal;
         Authors = new List<ArticlesAuthors>();
     }
@@ -35,6 +39,12 @@ public class Article : BaseModel
     public EnumRSCI? Rsci { get; set; }
 
     public EnumVAK? Vak { get; set; }
+    
+    public EnumCoreRSCI? CoreRsci { get; set; }
+    
+    public string? Volume { get; set; }
+    
+    public string? Language { get; set; }
     
     public Journal? Journal { get; set; }
     
